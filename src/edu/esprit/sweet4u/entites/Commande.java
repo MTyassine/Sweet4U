@@ -3,6 +3,7 @@ package edu.esprit.sweet4u.entites;
 
 public class Commande {
     
+    int id;
     boolean statutPayement;
     boolean statutValidation;
     Article [] listeArticle;
@@ -51,6 +52,10 @@ public class Commande {
         return chiffreAffaire;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public void setStatutPayement(boolean statutPayement) {
         this.statutPayement = statutPayement;
     }
@@ -81,6 +86,36 @@ public class Commande {
 
     public static void setChiffreAffaire(float chiffreAffaire) {
         Commande.chiffreAffaire = chiffreAffaire;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Commande other = (Commande) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Commande{" + "id=" + id + ", statutPayement=" + statutPayement + ", statutValidation=" + statutValidation + ", listeArticle=" + listeArticle + ", modePayement=" + modePayement + ", modeLivraisant=" + modeLivraisant + ", pritTotal=" + pritTotal + '}';
     }
     
     

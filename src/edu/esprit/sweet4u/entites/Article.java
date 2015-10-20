@@ -1,8 +1,11 @@
 
 package edu.esprit.sweet4u.entites;
 
+import java.util.Objects;
+
 class Article {
     
+    int id;
     String nom;
     float prix;
     float prixPromo;
@@ -65,9 +68,43 @@ class Article {
         Article.nbSatisfaction = nbSatisfaction;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
-        return "Article{" + "nom=" + nom + ", prix=" + prix + ", prixPromo=" + prixPromo + ", quantite=" + quantite + '}';
+        return "Article{" + "id=" + id + ", nom=" + nom + ", prix=" + prix + ", prixPromo=" + prixPromo + ", quantite=" + quantite + '}';
+    }
+    
+
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Article other = (Article) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (!Objects.equals(this.nom, other.nom)) {
+            return false;
+        }
+        return true;
     }
     
     
