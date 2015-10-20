@@ -10,5 +10,6 @@ package edu.esprit.sweet4u.entites;
  * @author Lenovo-G510
  */
 public class Personne {
+    private int id;
     
 }
