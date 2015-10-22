@@ -3,6 +3,7 @@ package edu.esprit.sweet4u.entites;
 
 public class Commande {
     
+    
     int id;
     boolean statutPayement;
     boolean statutValidation;
@@ -18,6 +19,8 @@ public class Commande {
         this.statutValidation = statutValidation;
         this.modePayement = modePayement;
         this.modeLivraisant = modeLivraisant;
+        nbCommande++;
+        
     }
 
     public boolean isStatutPayement() {
