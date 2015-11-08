@@ -6,17 +6,25 @@
 
 package edu.esprit.sweet4u.entites;
 
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 /**
  *
  * @author Nassoura
  */
 public class Client extends Personne{
-    static int nbClient;
-    Commande [] listeCommande ;
+    private static int nbClient;
+    private Commande [] listeCommande ;
+ 
+   
 
     public static int getNbClient() {
         return nbClient;
     }
+
+   
 
     public Commande[] getListeCommande() {
         return listeCommande;
@@ -31,10 +39,24 @@ public class Client extends Personne{
     public String toString() {
         return "Client{" + "listeCommande=" + listeCommande + '}';
     }
+
+    public Client(String nom, String prenom, String adresse, Date dateNaissance, int cin, String login, String pwd) {
+        super(nom, prenom, adresse, dateNaissance, cin, login, pwd);
+    }
+
+    public Client() {
+    }
+    
+    
+}
+
+   
+   
+
+  
     
 
    
     
     
     
-}

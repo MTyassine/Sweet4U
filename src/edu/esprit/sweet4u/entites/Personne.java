@@ -5,24 +5,53 @@
  */
 package edu.esprit.sweet4u.entites;
 
+import java.sql.Date;
 import java.util.Objects;
-
-
 
 /**
  *
  * @author Lenovo-G510
  */
 public class Personne {
+
     private int id;
     private String nom;
     private String prenom;
     private String adresse;
-    private String dateNaissance;
+    private Date dateNaissance;
     private int cin;
     private String login;
     private String pwd;
+   
     static int nbPersonne;
+
+   
+    public Personne(String nom, String prenom, String adresse,Date dateNaissance, int cin, String login, String pwd) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.adresse = adresse;
+        this.dateNaissance=dateNaissance;
+        this.cin = cin;
+        this.login = login;
+        this.pwd = pwd;
+       
+    }
+
+    
+
+    
+    
+
+
+   
+
+   
+    
+    
+
+    public Personne() {
+
+    }
 
     public int getId() {
         return id;
@@ -56,11 +85,11 @@ public class Personne {
         this.adresse = adresse;
     }
 
-    public String getDateNaissance() {
+    public Date getDateNaissance() {
         return dateNaissance;
     }
 
-    public void setDateNaissance(String dateNaissance) {
+    public void setDateNaissance(Date dateNaissance) {
         this.dateNaissance = dateNaissance;
     }
 
@@ -149,14 +178,9 @@ public class Personne {
         }
         return true;
     }
-    
-    
-    
 
-
-    
     @Override
     public String toString() {
-        return "Personne{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", dateNaissance=" + dateNaissance + ", cin=" + cin + ", login=" + login + ", pwd=" + pwd + ", mail=" + mail + '}';
+        return "Personne{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", dateNaissance=" + dateNaissance + ", cin=" + cin + ", login=" + login;
     }
 }

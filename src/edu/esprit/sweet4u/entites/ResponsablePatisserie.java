@@ -6,32 +6,47 @@
 
 package edu.esprit.sweet4u.entites;
 
+import java.sql.Date;
+
 /**
  *
  * @author Nassoura
  */
 public class ResponsablePatisserie extends Personne {
-    private String patisserie;
-    private String adressePatisserie;
+    private String nom_patisserie;
+    private String adresse_Patisserie;
     static int nbResponsable;
     static int nbPatisserie;
     Catalogue [] listCatalogue;
 
-    public String getPatisserie() {
-        return patisserie;
+    public ResponsablePatisserie(String nom_patisserie, String adresse_Patisserie, String nom, String prenom, String adresse,Date dateNaissance, int cin, String login, String pwd) {
+        super(nom, prenom, adresse, dateNaissance, cin, login, pwd);
+        this.nom_patisserie = nom_patisserie;
+        this.adresse_Patisserie = adresse_Patisserie;
     }
 
-    public void setPatisserie(String patisserie) {
-        this.patisserie = patisserie;
+   
+    
+
+    public String getNom_patisserie() {
+        return nom_patisserie;
     }
 
-    public String getAdressePatisserie() {
-        return adressePatisserie;
+    public String getAdresse_Patisserie() {
+        return adresse_Patisserie;
     }
 
-    public void setAdressePatisserie(String adressePatisserie) {
-        this.adressePatisserie = adressePatisserie;
+    public void setNom_patisserie(String nom_patisserie) {
+        this.nom_patisserie = nom_patisserie;
     }
+
+    public void setAdresse_Patisserie(String adresse_Patisserie) {
+        this.adresse_Patisserie = adresse_Patisserie;
+    }
+
+  
+
+   
 
     public static int getNbResponsable() {
         return nbResponsable;
@@ -47,6 +62,9 @@ public class ResponsablePatisserie extends Personne {
 
     public static void setNbPatisserie(int nbPatisserie) {
         ResponsablePatisserie.nbPatisserie = nbPatisserie;
+    }
+
+    public ResponsablePatisserie() {
     }
     
 }
