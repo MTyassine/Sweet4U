@@ -51,10 +51,12 @@ public class AjouterPatisserie extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         jTextField2.setText("jTextField2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable1.setModel(new PatisserieModel());
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -64,12 +66,17 @@ public class AjouterPatisserie extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 523, 152));
+        getContentPane().add(codePostal, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 185, 118, -1));
+
         delegation.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ariana", "Béja", "Ben Arous", "Bizerte", "Gabès", "Gafsa", "Jendouba", "Kairouan", "Kasserine", "Kébili", "La Manouba", "Le Kef", "Mahdia", "Médenine", "Monastir", "Nabeul", "Sfax", "Sidi Bouzid", "Siliana ", "Sousse", "Tataouine", "Tozeur", "Tunis", "Zaghouan" }));
         delegation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 delegationActionPerformed(evt);
             }
         });
+        getContentPane().add(delegation, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 185, -1, -1));
+        getContentPane().add(adresse, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 246, 340, -1));
 
         ajouter.setText("Ajouter");
         ajouter.addActionListener(new java.awt.event.ActionListener() {
@@ -77,6 +84,7 @@ public class AjouterPatisserie extends javax.swing.JFrame {
                 ajouterActionPerformed(evt);
             }
         });
+        getContentPane().add(ajouter, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 284, -1, -1));
 
         modifier.setText("Modifier");
         modifier.addActionListener(new java.awt.event.ActionListener() {
@@ -84,6 +92,7 @@ public class AjouterPatisserie extends javax.swing.JFrame {
                 modifierActionPerformed(evt);
             }
         });
+        getContentPane().add(modifier, new org.netbeans.lib.awtextra.AbsoluteConstraints(213, 284, -1, -1));
 
         suprimer.setText("Suprimer");
         suprimer.addActionListener(new java.awt.event.ActionListener() {
@@ -91,66 +100,24 @@ public class AjouterPatisserie extends javax.swing.JFrame {
                 suprimerActionPerformed(evt);
             }
         });
+        getContentPane().add(suprimer, new org.netbeans.lib.awtextra.AbsoluteConstraints(322, 284, -1, -1));
 
         jLabel1.setText("Delegation");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 188, -1, -1));
 
         jLabel2.setText("Ciode Postal");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 188, -1, -1));
 
         jLabel3.setText("Adresse");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 249, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3))
-                        .addGap(44, 44, 44)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(delegation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel2)
-                                .addGap(43, 43, 43)
-                                .addComponent(codePostal, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(adresse, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(ajouter)
-                .addGap(109, 109, 109)
-                .addComponent(modifier)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(suprimer)
-                .addGap(59, 59, 59))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(delegation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(codePostal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(adresse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ajouter)
-                    .addComponent(modifier)
-                    .addComponent(suprimer))
-                .addGap(0, 30, Short.MAX_VALUE))
-        );
+        jButton1.setText("Retour");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 318, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -238,6 +205,13 @@ public class AjouterPatisserie extends javax.swing.JFrame {
     
     }//GEN-LAST:event_jTable1MouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+         AcceuilResponsablePatisserie acceuil=new AcceuilResponsablePatisserie();
+        acceuil.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -278,6 +252,7 @@ public class AjouterPatisserie extends javax.swing.JFrame {
     private javax.swing.JButton ajouter;
     private javax.swing.JTextField codePostal;
     private javax.swing.JComboBox delegation;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

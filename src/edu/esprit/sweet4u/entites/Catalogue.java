@@ -7,21 +7,28 @@ public class Catalogue {
     
     int id;
     String nom;
-    Article [] listeArticle;
-    Commentaire [] listCommentaire;
+    private int id_rp;
+     private  String lien;
+   // Article [] listeArticle;
+    //Commentaire [] listCommentaire;
     static int nbCatalogue;
 
-    public Catalogue(String nom) {
+    public Catalogue(String nom ,int id,int id_rp) {
         this.nom = nom;
+        this.id=id;
+        this.id_rp=id_rp;
+    }
+     public Catalogue() {
+        
     }
 
     public String getNom() {
         return nom;
     }
 
-    public Article[] getListeArticle() {
-        return listeArticle;
-    }
+   // public Article[] getListeArticle() {
+       // return listeArticle;
+    //}
 
     public static int getNbCatalogue() {
         return nbCatalogue;
@@ -31,13 +38,13 @@ public class Catalogue {
         this.nom = nom;
     }
 
-    public void setListeArticle(Article[] listeArticle) {
-        this.listeArticle = listeArticle;
-    }
+   // public void setListeArticle(Article[] listeArticle) {
+     //   this.listeArticle = listeArticle;
+    //}
 
-    public static void setNbCatalogue(int nbCatalogue) {
-        Catalogue.nbCatalogue = nbCatalogue;
-    }
+   // public static void setNbCatalogue(int nbCatalogue) {
+     //   Catalogue.nbCatalogue = nbCatalogue;
+    //}
 
     public int getId() {
         return id;
@@ -47,18 +54,34 @@ public class Catalogue {
         this.id = id;
     }
 
-    public Commentaire[] getListCommentaire() {
-        return listCommentaire;
+    public int getId_rp() {
+        return id_rp;
     }
 
-    public void setListCommentaire(Commentaire[] listCommentaire) {
-        this.listCommentaire = listCommentaire;
+    public void setId_rp(int id_rp) {
+        this.id_rp = id_rp;
     }
 
+    public String getLien() {
+        return lien;
+    }
+
+    public void setLien(String lien) {
+        this.lien = lien;
+    }
+
+    // public Commentaire[] getListCommentaire() {
+    //    return listCommentaire;
+    // }
+    //  public void setListCommentaire(Commentaire[] listCommentaire) {
+    //     this.listCommentaire = listCommentaire;
+    // }
     @Override
     public String toString() {
-        return "Catalogue{" + "id=" + id + ", nom=" + nom + ", listeArticle=" + listeArticle + ", listCommentaire=" + listCommentaire + '}';
+        return "Catalogue{" + "id=" + id + ", nom=" + nom + ", id_rp=" + id_rp + ", lien=" + lien + '}';
     }
+
+   
 
 
     @Override

@@ -1,25 +1,49 @@
- 
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 package edu.esprit.sweet4u.entites;
 
 import java.util.Objects;
 
-class Article {
+/**
+ *
+ * @author Nassoura
+ */
+public class Article {
     
-    int id;
-    String nom;
-    float prix;
-    float prixPromo;
-    float quantite;
+     private int id;
+    private String nom;
+    private float prix;
+    private float prixPromo;
+    private int idCatalogue;
+
+ 
     static int nbVente;
     static int nbSatisfaction;
-
-    public Article(String nom, float prix, float prixPromo, float quantite) {
+    public Article(int id ,String nom, float prix, float prixPromo) {
+        this.id= id;
         this.nom = nom;
         this.prix = prix;
         this.prixPromo = prixPromo;
-        this.quantite = quantite;
+        
     }
+    public Article(String nom, float prix, float prixPromo) {
+        
+        this.nom = nom;
+        this.prix = prix;
+        this.prixPromo = prixPromo;
+        
+    }
+    
 
+    public Article() {}
+   
+   
+   
+   
     public String getNom() {
         return nom;
     }
@@ -32,9 +56,7 @@ class Article {
         return prixPromo;
     }
 
-    public float getQuantite() {
-        return quantite;
-    }
+    
 
     public static int getNbVente() {
         return nbVente;
@@ -56,9 +78,14 @@ class Article {
         this.prixPromo = prixPromo;
     }
 
-    public void setQuantite(float quantite) {
-        this.quantite = quantite;
+      public int getIdCatalogue() {
+        return idCatalogue;
     }
+
+    public void setIdCatalogue(int idCatalogue) {
+        this.idCatalogue = idCatalogue;
+    }
+    
 
     public static void setNbVente(int nbVente) {
         Article.nbVente = nbVente;
@@ -78,7 +105,7 @@ class Article {
 
     @Override
     public String toString() {
-        return "Article{" + "id=" + id + ", nom=" + nom + ", prix=" + prix + ", prixPromo=" + prixPromo + ", quantite=" + quantite + '}';
+        return "Article{" + "id=" + id + ", nom=" + nom + ", prix=" + prix + ", prixPromo=" + prixPromo + '}';
     }
     
 
@@ -106,6 +133,9 @@ class Article {
         }
         return true;
     }
+    
+    
+    
     
     
     
