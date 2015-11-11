@@ -208,7 +208,7 @@ private ResponsablePatisserie rp;
         pswdP.setText(Authentification.personne.getPwd());
         adresseP.setText(Authentification.personne.getAdresse());
         nomPatisserie.setText(Authentification.responsable.getNom_patisserie());
-        adressepatisserie.setText(Authentification.responsable.getAdresse_Patisserie());
+       // adressepatisserie.setText(Authentification.responsable.getAdresse_Patisserie());
          
 
     }//GEN-LAST:event_formWindowActivated
@@ -226,7 +226,7 @@ private ResponsablePatisserie rp;
         rp.setPwd(pswdP.getText());
         rp.setAdresse(adresseP.getText());
         rp.setNom_patisserie(nomPatisserie.getText());
-        rp.setAdresse_Patisserie(adressepatisserie.getText());
+        //rp.setAdresse_Patisserie(adressepatisserie.getText());
         rpdao.updateResponsablePatisserie(rp,  Authentification.personne.getId());
          JOptionPane.showMessageDialog(rootPane,"personne modifiée");
   

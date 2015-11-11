@@ -390,17 +390,17 @@ public class CompteClient extends javax.swing.JFrame {
                             .addComponent(pwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(tpwd)
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel8)
+                        .addGap(21, 21, 21)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel8)
+                            .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tdate)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43)
+                        .addGap(65, 65, 65)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(adresse, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel9))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(valider, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -472,10 +472,10 @@ public class CompteClient extends javax.swing.JFrame {
         if ((!nom.getText().trim().equals(""))&&(!prenom.getText().trim().equals(""))&&(!cin.getText().trim().equals(""))&&(!login.getText().trim().equals(""))&&(!pwd.getText().trim().equals(""))&&(!adresse.getText().trim().equals(""))){
         p.setNom(nom.getText());
         p.setPrenom(prenom.getText());
-        p.setAdresse(adresse.getText());
+        //p.setAdresse(adresse.getText());
         //p.setDateNaissance(((JTextField)date.getDateEditor().getUiComponent()).getText());  
 
-       java.util.Date utilDate = date.getDate();
+      java.util.Date utilDate = date.getDate();
         java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
         p.setDateNaissance(sqlDate);
         
@@ -525,7 +525,7 @@ public class CompteClient extends javax.swing.JFrame {
         p.setLogin(login.getText());
         p.setPwd(pwd.getText());
         p.setNom_patisserie(nomPatisserie.getText());
-        p.setAdresse_Patisserie(adressepatisserie.getText());
+        //p.setAdresse_Patisserie(adressepatisserie.getText());
         System.out.println(p);
         pdao.insertResponsablePatisserie(p);
 

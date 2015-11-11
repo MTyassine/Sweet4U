@@ -55,7 +55,7 @@ public class ResponsablePatisserieDAO implements IResponsablePatisserieDAO{
                 idP = parseInt(result.getObject(1).toString());
             
             
-            sql ="INSERT INTO responsable_patissier (nom_patisserie,adresse_patisserie,id_p)VALUES('"+rp.getNom_patisserie()+"','"+rp.getAdresse_Patisserie()+"','"+idP+"')";
+            sql ="INSERT INTO responsable_patissier (patisserie,id_p)VALUES('"+rp.getNom_patisserie()+"','"+idP+"')";
             state.executeUpdate(sql);
             
             System.out.println("Patissié ajouter avec succée");
@@ -79,7 +79,7 @@ public class ResponsablePatisserieDAO implements IResponsablePatisserieDAO{
                 d = new ResponsablePatisserie();
                 d.setId(rs.getInt(1));
                 d.setNom_patisserie(rs.getString(2));
-                d.setAdresse_Patisserie(rs.getString(3));
+                //d.setAdresse_Patisserie(rs.getString(3));
             }
 
         } catch (SQLException ex) {
@@ -107,7 +107,7 @@ public class ResponsablePatisserieDAO implements IResponsablePatisserieDAO{
          try {
             PreparedStatement statement = conn.prepareStatement(requete);
             statement.setString(1,rp.getNom_patisserie());
-            statement.setString(2, rp.getAdresse_Patisserie());
+            //statement.setString(2, rp.getAdresse_Patisserie());
             statement.executeUpdate();
          } catch (SQLException ex) {
             ex.printStackTrace();
@@ -135,6 +135,32 @@ public class ResponsablePatisserieDAO implements IResponsablePatisserieDAO{
         }
         return nombreResponsable;
     }
+     
+     // ajouter par MT Yassine Foudhaili
+     
+     public ResponsablePatisserie RechercherResponsable(int id) {
+
+        String requete = "SELECT * FROM responsable_patissier WHERE id_p=?";
+        ResponsablePatisserie d = new ResponsablePatisserie();
+        try {
+            PreparedStatement statement = conn.prepareStatement(requete);
+            statement.setInt(1, id);
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                
+                d.setId(rs.getInt(1));
+                d.setNom_patisserie(rs.getString(2));
+                //d.setAdresse_Patisserie(rs.getString(3));
+            }
+
+        } catch (SQLException ex) {
+            //System.err.println("erreur de recherche");
+            ex.printStackTrace();
+        }
+        return d;
+    }
+     
     }
 
     

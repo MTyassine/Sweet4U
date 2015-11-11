@@ -170,4 +170,63 @@ public class PersonneDAO implements IPersonneDAO {
     {
         
     }
+    
+    // ajouter par MT Yassine Foudhaili
+    
+    public Personne ChercherPersonneByNom(String nom, String prenom){
+        
+        Personne p = new Personne();
+        
+        sql ="SELECT * FROM personne WHERE nom ='"+nom+"' AND prenom = '"+prenom+"'" ;
+              
+        try {
+        ResultSet result = state.executeQuery(sql);
+                
+         if (result.next()) {
+
+                p.setId(result.getInt(1));
+                p.setNom(result.getString(2));
+                p.setPrenom(result.getString(3));
+                p.setAdresse(result.getString(4));
+                //p.setDateNaissance(result.getString(5));
+                p.setCin(result.getInt(6));
+                p.setLogin(result.getString(7));
+
+            }
+            return p;
+            }catch (SQLException ex) {
+            System.err.println("Erreur de recuperation de la personne");
+    
+    }
+    return p;
+}
+    
+    //Ajouter par MT Yassine Foudhaili
+    
+    public Personne ChercherPersonneByID(int id){
+        
+        Personne p = new Personne();
+        
+        sql ="SELECT * FROM personne WHERE id ="+id ;
+              
+        try {
+        ResultSet result = state.executeQuery(sql);
+                
+         if (result.next()) {
+
+                p.setId(result.getInt(1));
+                p.setNom(result.getString(2));
+                p.setPrenom(result.getString(3));
+                p.setAdresse(result.getString(4));
+                //p.setDateNaissance(result.getString(5));
+                p.setCin(result.getInt(6));
+
+            }
+            return p;
+            }catch (SQLException ex) {
+            System.err.println("Erreur de recuperation de la personne d'id :"+id);
+    
+    }
+    return p;
+}
 }

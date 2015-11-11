@@ -16,6 +16,7 @@ import edu.esprit.sweet4u.GUI.modifCompteResponsable;
 import edu.esprit.sweet4u.entites.Client;
 import edu.esprit.sweet4u.entites.Personne;
 import edu.esprit.sweet4u.entites.ResponsablePatisserie;
+import edu.esprit.sweet4u.util.PersonneConenction;
 
 /**
  *
@@ -143,25 +144,31 @@ public class Authentification extends javax.swing.JFrame {
         if (id_retourclient<=0)
             
         {  login.getText();
+            PersonneConenction.setInstance(p);  //ajouter par MT Yassine
       // Personne p = pdao.FindPersonneByLogin(login.getText());
         this.personne=p;
         System.out.println(p);
-            ModifierCompteClient ac = new ModifierCompteClient();
-          ac.setP(p);
+            //ModifierCompteClient ac = new ModifierCompteClient();
+            EvoyerReclamation ac = new EvoyerReclamation();
+            
+          //ac.setP(p);
           ac.setVisible(true);
           this.setVisible(false);
             
         }
         else if(id_retourclient>0)
         {
-             login.getText();
+            PersonneConenction.setInstance(p);  //ajouter par MT Yassine 
+            login.getText();
       // Personne p = pdao.FindPersonneByLogin(login.getText());
              ResponsablePatisserieDAO a = new ResponsablePatisserieDAO();
+             
              this.personne=p;
              responsable = a.FindResponsableByLogin(p.getId());
              System.out.println(responsable);
         
-           modifCompteResponsable res = new modifCompteResponsable();
+           //modifCompteResponsable res = new modifCompteResponsable();
+             AjouterPatisserie res = new AjouterPatisserie();
           
          res.setVisible(true);
           this.setVisible(false);
