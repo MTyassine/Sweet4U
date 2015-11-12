@@ -28,9 +28,10 @@ public class PatisserieDAO {
         
         cnx = MyConnection.getInstance();
     }
-     public List<ResponsablePatisserie> afficherLesPatisseries() {
-        List<ResponsablePatisserie> maListe = new ArrayList<>();
-        String requete = "SELECT patisserie FROM responsable_patissier";
+     public ArrayList<ResponsablePatisserie> afficherLesPatisseries() {
+         
+        ArrayList<ResponsablePatisserie> maListe = new ArrayList<>();
+        String requete = "SELECT * FROM responsable_patissier";
         Statement st;
         try {
             st = cnx.createStatement();
@@ -46,7 +47,7 @@ public class PatisserieDAO {
             }catch (SQLException ex) {
             System.err.println("Erreur d'affichage de la liste");
         }
-        return null;
+        return maListe;
         }
     
 }

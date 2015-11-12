@@ -31,7 +31,7 @@ public class CrudCatalogue extends javax.swing.JFrame {
     Connection cnx;
      AbstractTableModel model;
       private Catalogue k=new Catalogue();
-    private static final String homeimg="C:\\Users\\Nassoura\\Documents\\NetBeansProjects\\Nouveau dossier\\Sweet4U\\src\\image\\swwet.jpg";
+    private static final String homeimg="C:\\Users\\Lenovo-G510\\Dropbox\\ESPRIT\\AlphaTech\\Sweet4U\\Sweet4u 2.0\\Sweet4U\\src\\image\\swwet.jpg";
     public CrudCatalogue() {
         initComponents();
         cnx = MyConnection.getInstance();

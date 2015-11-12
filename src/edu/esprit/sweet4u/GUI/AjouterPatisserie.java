@@ -11,7 +11,9 @@ import edu.esprit.sweet4u.entites.Patisserie;
 import edu.esprit.sweet4u.entites.Personne;
 import edu.esprit.sweet4u.entites.ResponsablePatisserie;
 import edu.esprit.sweet4u.util.PersonneConenction;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -144,9 +146,15 @@ public class AjouterPatisserie extends javax.swing.JFrame {
         
         rdao.ajouterPatisserie(p);
         
+       OJMStest map= new OJMStest();  
+       // test map = new test();
+            map.setVisible(true);
+        
         JOptionPane.showMessageDialog(rootPane, "Patisserie Ajouter !!!");
         
         AjouterPatisserie res = new AjouterPatisserie();
+        
+       
           
         res.setVisible(true);
         this.setVisible(false);

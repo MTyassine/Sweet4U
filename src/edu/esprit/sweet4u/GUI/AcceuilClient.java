@@ -6,6 +6,11 @@
 
 package edu.esprit.sweet4u.GUI;
 
+import edu.esprit.sweet4u.DAO.AdresseDAO;
+import edu.esprit.sweet4u.DAO.ResponsablePatisserieDAO;
+import edu.esprit.sweet4u.entites.ResponsablePatisserie;
+import javax.swing.JOptionPane;
+import javax.swing.table.AbstractTableModel;
 import org.jfree.ui.RefineryUtilities;
 
 /**
@@ -17,6 +22,10 @@ public class AcceuilClient extends javax.swing.JFrame {
     /**
      * Creates new form AcceuilClient
      */
+    
+    int id_rp = 0;
+      AbstractTableModel model;
+    
     public AcceuilClient() {
         initComponents();
         RefineryUtilities.centerFrameOnScreen(this);
@@ -33,7 +42,10 @@ public class AcceuilClient extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -44,15 +56,22 @@ public class AcceuilClient extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, -1, -1));
 
-        jButton2.setText("affichage patiserie");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+        jTable1.setModel(new tablPatisserie());
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, -1, -1));
+        jScrollPane1.setViewportView(jTable1);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 220, 250));
+
+        jTable2.setModel(new PatisserieModel(id_rp));
+        jScrollPane2.setViewportView(jTable2);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 260, 220));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -63,11 +82,26 @@ public class AcceuilClient extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        ListPatisserie listp=new ListPatisserie();
-        listp.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        
+        //AdresseDAO adao = new AdresseDAO();
+        ResponsablePatisserieDAO rdao = new ResponsablePatisserieDAO();
+        ResponsablePatisserie r = new ResponsablePatisserie();
+        
+         String nomPatisserie ;
+        
+        int rowS = jTable1.getSelectedRow();
+            nomPatisserie = jTable1.getModel().getValueAt(rowS, 0).toString();
+        r = rdao.RechercherResponsableParNomP(nomPatisserie);
+        id_rp = r.getId();
+        
+        PatisserieModel detCom = new  PatisserieModel(id_rp);
+            jTable2.setModel(detCom);
+            detCom.fireTableDataChanged();
+            model = (AbstractTableModel) jTable2.getModel();
+         
+            
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -106,6 +140,9 @@ public class AcceuilClient extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 }

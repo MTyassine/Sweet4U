@@ -5,7 +5,8 @@ import java.util.Objects;
 
 public class Patisserie {
     
-    int id, id_rp, codePostal, x, y;
+    int id, id_rp, codePostal;
+    double x, y;
     String delegation, adresse;
 
     public Patisserie(int id_rp, int codePostal, String delegation, String adresse) {
@@ -15,7 +16,7 @@ public class Patisserie {
         this.adresse = adresse;
     }
 
-    public int getX() {
+    public double getX() {
         return x;
     }
 
@@ -23,7 +24,7 @@ public class Patisserie {
         this.x = x;
     }
 
-    public int getY() {
+    public double getY() {
         return y;
     }
 

@@ -2,7 +2,9 @@
 package edu.esprit.sweet4u.GUI;
 
 import edu.esprit.sweet4u.DAO.PatisserieDAO;
+import edu.esprit.sweet4u.DAO.ResponsablePatisserieDAO;
 import edu.esprit.sweet4u.entites.ResponsablePatisserie;
+import java.util.ArrayList;
 
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
@@ -17,11 +19,14 @@ import javax.swing.table.AbstractTableModel;
 public class tablPatisserie  extends AbstractTableModel{
     
      
-      List<ResponsablePatisserie> patisserie ;
+      ArrayList<ResponsablePatisserie> patisserie ;
     String[]entetes = {"Nom"};
     
      public tablPatisserie(){
-         patisserie = new PatisserieDAO().afficherLesPatisseries();
+        
+          ResponsablePatisserieDAO pdao = new ResponsablePatisserieDAO();
+          patisserie = new ArrayList<ResponsablePatisserie>();
+          patisserie = pdao.afficherLesPatisseries();
         
     } 
    

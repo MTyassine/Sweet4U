@@ -15,7 +15,7 @@ import javax.swing.table.AbstractTableModel;
 
 public class PatisserieModel extends AbstractTableModel{
     
-    List <Patisserie> maListe;
+    ArrayList <Patisserie> maListe;
     String [] entete ={"Delegation","Adresse","Code Postal"};
     
 
@@ -32,7 +32,23 @@ public class PatisserieModel extends AbstractTableModel{
         
         AdresseDAO pdao = new AdresseDAO();
         maListe = new ArrayList<Patisserie>();
-        maListe = pdao.afficherPatisserie(id_rp);
+        maListe = pdao.ChercherPatisserieParId(id_rp);
+    }
+    
+    public PatisserieModel(int id_rp) {
+        
+        //Personne  pc = PersonneConenction.getInstance();
+        
+        //ResponsablePatisserie rp = new ResponsablePatisserie();
+        //ResponsablePatisserieDAO rpdao = new ResponsablePatisserieDAO();
+        
+       // rp = rpdao.RechercherResponsable(pc.getId());
+        
+        //int id_rp = rp.getId();
+        
+        AdresseDAO pdao = new AdresseDAO();
+        maListe = new ArrayList<Patisserie>();
+        maListe = pdao.ChercherPatisserieParId(id_rp);
     }
 
    

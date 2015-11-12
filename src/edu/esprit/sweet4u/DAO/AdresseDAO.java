@@ -65,6 +65,29 @@ public class AdresseDAO {
         
     }
     
+    public void ajouterCoord(Patisserie p){
+        
+        ResponsablePatisserie rp = new ResponsablePatisserie();
+        ResponsablePatisserieDAO rpdao = new ResponsablePatisserieDAO();
+        
+        rp = rpdao.FindResponsableByLogin(pc.getId());
+        
+        int id_pr = rp.getId();
+        
+        try {
+            sql ="UPDATE patisserie SET x ="+p.getX()+" , y = "+p.getY()+" WHERE id=MAX(id)";
+            System.out.println(sql);
+            state.executeUpdate(sql);
+            
+            System.out.println("coordonnée ajouter");
+            
+        } catch (SQLException ex) {
+            System.out.println("coordonnée NON eajouter !!!");
+            Logger.getLogger(AdresseDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
     public Patisserie ChercherPatisserie (String delegation, String adresse, int code_postal){
     
     Patisserie p = new Patisserie(-1, code_postal, delegation, adresse);
@@ -153,6 +176,34 @@ public class AdresseDAO {
     
         List<Patisserie> maListe = new ArrayList<Patisserie>();
         sql ="SELECT * FROM patisserie WHERE delegation LIKE '%"+msg+"%' OR adresse LIKE '%"+msg+"%'";
+        
+        try {
+
+            ResultSet result = state.executeQuery(sql);
+;
+            
+            while (result.next()) {
+                Patisserie p = new Patisserie(-1, -1, null, null);
+                
+                p.setId(result.getInt(1));
+                p.setId_rp(result.getInt(2));
+                p.setDelegation(result.getString(3));
+                p.setAdresse(result.getString(4));
+                p.setCodePostal(result.getInt(5));
+                maListe.add(p);
+            }
+            return maListe;
+            }catch (SQLException ex) {
+            System.err.println("Erreur d'affichage de la liste");
+        }
+        return maListe;
+        
+    }
+    
+    public ArrayList<Patisserie> ChercherPatisserieParId(int id_rp){
+    
+        ArrayList<Patisserie> maListe = new ArrayList<Patisserie>();
+        sql ="SELECT * FROM patisserie WHERE id_rp ="+id_rp;
         
         try {
 
