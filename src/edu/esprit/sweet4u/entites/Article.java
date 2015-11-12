@@ -19,6 +19,7 @@ public class Article {
     private float prix;
     private float prixPromo;
     private int idCatalogue;
+    private int id_rp; // modifié par Yosr
 
  
     static int nbVente;
@@ -30,6 +31,7 @@ public class Article {
         this.prixPromo = prixPromo;
         
     }
+    
     public Article(String nom, float prix, float prixPromo) {
         
         this.nom = nom;
@@ -54,6 +56,10 @@ public class Article {
 
     public float getPrixPromo() {
         return prixPromo;
+    }
+
+    public int getId_rp() {
+        return id_rp;
     }
 
     
@@ -101,6 +107,10 @@ public class Article {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void setId_rp(int id_rp) {
+        this.id_rp = id_rp;
     }
 
     @Override

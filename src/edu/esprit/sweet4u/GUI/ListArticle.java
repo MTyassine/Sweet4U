@@ -6,6 +6,11 @@
 
 package edu.esprit.sweet4u.GUI;
 
+import edu.esprit.sweet4u.DAO.PanierDAO;
+import edu.esprit.sweet4u.entites.Article;
+import edu.esprit.sweet4u.entites.ArticlePanier;
+import edu.esprit.sweet4u.entites.Panier;
+import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 import org.jfree.ui.RefineryUtilities;
 
@@ -45,6 +50,7 @@ public class ListArticle extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         Retour = new javax.swing.JButton();
+        ajouterAuPanier = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -66,6 +72,14 @@ public class ListArticle extends javax.swing.JFrame {
         });
         getContentPane().add(Retour, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 390, -1, -1));
 
+        ajouterAuPanier.setText("Ajouter au Panier");
+        ajouterAuPanier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ajouterAuPanierActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ajouterAuPanier, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 390, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -76,6 +90,35 @@ public class ListArticle extends javax.swing.JFrame {
         this.setVisible(false);
 
     }//GEN-LAST:event_RetourActionPerformed
+
+    private void ajouterAuPanierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajouterAuPanierActionPerformed
+        RefineryUtilities.centerFrameOnScreen(this);
+        try {
+          // PanierModel pModel = new PanierModel();
+              Panier pan=new Panier();
+              
+            PanierDAO pDAO = new PanierDAO();
+            String nom = model.getValueAt(jTable1.getSelectedRow(), 0).toString();
+           // System.out.println("nom=" + nom);
+            int id = pDAO.findArticleByNom(nom);
+           // System.out.println("id="+id);
+            Article art = pDAO.findArticleById(id);
+           // art.toString();
+            ArticlePanier artPan = new ArticlePanier(art);
+           // System.out.println(artPan);
+            //pan.getListeArtPan().add(artPan);
+            pan.ajouterAuPanier(artPan); 
+           // System.out.println( pan.getListeArtPan());
+ AfficherPanier Panier = new AfficherPanier(); //pour ouvrir la page panier
+
+            this.setVisible(false);
+            Panier.setVisible(true);
+        } catch (Exception e) {
+            System.out.println(e);
+
+            JOptionPane.showMessageDialog(rootPane, " Erreur d'ouverture du Panier ");
+        }
+    }//GEN-LAST:event_ajouterAuPanierActionPerformed
 
     /**
      * @param args the command line arguments
@@ -106,6 +149,7 @@ public class ListArticle extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new ListArticle().setVisible(true);
             }
@@ -114,6 +158,7 @@ public class ListArticle extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Retour;
+    private javax.swing.JButton ajouterAuPanier;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
