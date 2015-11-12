@@ -69,7 +69,7 @@ public class ListCatalogue extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 490, 170));
 
-        jButton1.setText("afficher catalogue d'un article");
+        jButton1.setText("Afficher article d'un catalogue");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);

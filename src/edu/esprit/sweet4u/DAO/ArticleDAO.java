@@ -120,8 +120,26 @@ public class ArticleDAO {
         }
         return id_A;
     }
-
-
+// ajouté par Slaiem Ben Cherifa
+   public Article trouverArticleParId(int id) {
+        String requete = "SELECT * FROM article WHERE id =" +id;
+        Article a = null;
+        try {
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(requete);
+            a= new Article();
+            while (rs.next()) {
+                a.setId(rs.getInt(1));
+                a.setNom(rs.getString(2));
+                a.setPrix(rs.getInt(3));
+                a.setPrixPromo(rs.getInt(4));
+                a.setIdCatalogue(rs.getInt(6));
+            }
+        } catch (SQLException ex) {
+            System.err.println("");
+        }
+        return a;
+     }
 
 
 

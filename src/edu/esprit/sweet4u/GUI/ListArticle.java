@@ -6,6 +6,7 @@
 
 package edu.esprit.sweet4u.GUI;
 
+import edu.esprit.sweet4u.DAO.ArticleDAO;
 import edu.esprit.sweet4u.DAO.PanierDAO;
 import edu.esprit.sweet4u.entites.Article;
 import edu.esprit.sweet4u.entites.ArticlePanier;
@@ -51,6 +52,7 @@ public class ListArticle extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         Retour = new javax.swing.JButton();
         ajouterAuPanier = new javax.swing.JButton();
+        Commenter = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -79,6 +81,14 @@ public class ListArticle extends javax.swing.JFrame {
             }
         });
         getContentPane().add(ajouterAuPanier, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 390, -1, -1));
+
+        Commenter.setText("Commenter");
+        Commenter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CommenterActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Commenter, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 120, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -120,6 +130,14 @@ public class ListArticle extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ajouterAuPanierActionPerformed
 
+    private void CommenterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CommenterActionPerformed
+         ArticleDAO artdao= new ArticleDAO();
+        int row = jTable1.getSelectedRow();
+            String articlesel = jTable1.getModel().getValueAt(row, 0).toString();
+          this.setVisible(false);
+        new Commentaires( artdao.trouverIdArticleParNom(articlesel)).setVisible(true);
+    }//GEN-LAST:event_CommenterActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -157,6 +175,7 @@ public class ListArticle extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Commenter;
     private javax.swing.JButton Retour;
     private javax.swing.JButton ajouterAuPanier;
     private javax.swing.JLabel jLabel1;

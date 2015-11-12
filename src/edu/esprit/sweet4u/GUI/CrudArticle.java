@@ -6,6 +6,7 @@
 
 package edu.esprit.sweet4u.GUI;
 
+import Twitter.ajouterTweet;
 import edu.esprit.sweet4u.DAO.ArticleDAO;
 import edu.esprit.sweet4u.entites.Article;
 import edu.esprit.sweet4u.util.MyConnection;
@@ -194,6 +195,9 @@ public class CrudArticle extends javax.swing.JFrame {
             tfNom.setText(null);
             tfPrix.setText(null);
             tfPromo.setText(null);
+           //ajoutées par Slaiem Ben Cherifa
+            ajouterTweet c = new ajouterTweet();
+            c.tweeter(tfNom.getText());
         }
     }//GEN-LAST:event_ajouterActionPerformed
 

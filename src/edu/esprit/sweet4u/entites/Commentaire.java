@@ -5,15 +5,49 @@ import java.util.Date;
 
 public class Commentaire {
     
-    int id;
-    Personne p;
-    Date date;
-    String commentaire;
+    private int id;
+    private int id_p;
+    private int id_a;
+    private String datecom;
+    private String commentaire;
+    private int signalement;
+    private boolean visible;
 
-    public Commentaire(Personne p, Date date, String commentaire) {
-        this.p = p;
-        this.date = date;
+    /**
+     *
+     * @param id
+     * @param id_p
+     * @param id_a
+     * @param commentaire
+     * 
+     */
+    public Commentaire(int id,int id_p,int id_a, String commentaire) {
+        this.id_p = id_p;
+        this.id=id;
+        this.id_a = id_a;
+  
         this.commentaire = commentaire;
+        
+    }
+
+    public Commentaire() {
+     //   throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public int getSignalement() {
+        return signalement;
+    }
+
+    public void setSignalement(int signalement) {
+        this.signalement = signalement;
+    }
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
     }
 
     public int getId() {
@@ -24,20 +58,30 @@ public class Commentaire {
         this.id = id;
     }
 
-    public Personne getP() {
-        return p;
+    public int getId_p() {
+        return id_p;
     }
 
-    public void setP(Personne p) {
-        this.p = p;
+    public void setId_p(int id_p) {
+        this.id_p = id_p;
     }
 
-    public Date getDate() {
-        return date;
+    public int getId_a() {
+        return id_a;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setId_a(int id_a) {
+        this.id_a = id_a;
+    }
+
+    
+
+    public String getDatecom() {
+        return datecom;
+    }
+
+    public void setDatecom(String datecom) {
+        this.datecom = datecom;
     }
 
     public String getCommentaire() {
@@ -50,9 +94,10 @@ public class Commentaire {
 
     @Override
     public String toString() {
-        return "Commentaire{" + "id=" + id + ", p=" + p + ", date=" + date + ", commentaire=" + commentaire + '}';
+        return "Commentaire{" + "id=" + id + ", id_p=" + id_p + ", id_a=" + id_a + ", date=" + datecom + ", commentaire=" + commentaire + '}';
     }
 
+    
     @Override
     public int hashCode() {
         int hash = 7;
