@@ -47,48 +47,52 @@ public class ListArticle extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         Retour = new javax.swing.JButton();
         ajouterAuPanier = new javax.swing.JButton();
         Commenter = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Affichage Article");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(257, 29, 190, -1));
+        getContentPane().setLayout(null);
 
         jTable1.setModel(new tablArticle());
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 350, 216));
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(60, 246, 710, 240);
 
-        Retour.setText("Retour");
+        Retour.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeineb\\Desktop\\pattiserie\\retour.png")); // NOI18N
         Retour.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RetourActionPerformed(evt);
             }
         });
-        getContentPane().add(Retour, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 390, -1, -1));
+        getContentPane().add(Retour);
+        Retour.setBounds(30, 640, 110, 40);
 
-        ajouterAuPanier.setText("Ajouter au Panier");
+        ajouterAuPanier.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeineb\\Desktop\\pattiserie\\ajouter au panier.png")); // NOI18N
         ajouterAuPanier.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ajouterAuPanierActionPerformed(evt);
             }
         });
-        getContentPane().add(ajouterAuPanier, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 390, -1, -1));
+        getContentPane().add(ajouterAuPanier);
+        ajouterAuPanier.setBounds(460, 510, 190, 50);
 
-        Commenter.setText("Commenter");
+        Commenter.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeineb\\Desktop\\pattiserie\\Sans titre - 1.png")); // NOI18N
         Commenter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CommenterActionPerformed(evt);
             }
         });
-        getContentPane().add(Commenter, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 120, -1));
+        getContentPane().add(Commenter);
+        Commenter.setBounds(190, 510, 170, 50);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeineb\\Desktop\\pattiserie\\12131.jpg")); // NOI18N
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(0, -20, 830, 740);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -178,7 +182,7 @@ public class ListArticle extends javax.swing.JFrame {
     private javax.swing.JButton Commenter;
     private javax.swing.JButton Retour;
     private javax.swing.JButton ajouterAuPanier;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

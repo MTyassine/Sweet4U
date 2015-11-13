@@ -75,8 +75,10 @@ public class Commentaires extends javax.swing.JFrame {
         Modifier = new javax.swing.JButton();
         Supprimer = new javax.swing.JButton();
         Signaler = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -104,95 +106,68 @@ public class Commentaires extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        Valider.setText("Valider");
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(130, 190, 375, 190);
+
+        Valider.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeineb\\Desktop\\pattiserie\\btn1212.png")); // NOI18N
         Valider.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ValiderActionPerformed(evt);
             }
         });
+        getContentPane().add(Valider);
+        Valider.setBounds(650, 530, 160, 50);
 
-        jButton2.setText("Annuler");
+        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeineb\\Desktop\\pattiserie\\annuler.png")); // NOI18N
+        getContentPane().add(jButton2);
+        jButton2.setBounds(650, 350, 160, 50);
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jTextField1);
+        jTextField1.setBounds(18, 521, 275, 20);
 
         jLabel1.setText("Commentaire");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(28, 319, 90, 189);
 
         NomEG.setText("Commentaires ");
+        getContentPane().add(NomEG);
+        NomEG.setBounds(28, 8, 120, 14);
 
-        Modifier.setText("Modifier");
+        Modifier.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeineb\\Desktop\\pattiserie\\modifier.png")); // NOI18N
         Modifier.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ModifierActionPerformed(evt);
             }
         });
+        getContentPane().add(Modifier);
+        Modifier.setBounds(650, 410, 160, 50);
 
-        Supprimer.setText("Supprimer");
+        Supprimer.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeineb\\Desktop\\pattiserie\\Supprimer.png")); // NOI18N
         Supprimer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SupprimerActionPerformed(evt);
             }
         });
+        getContentPane().add(Supprimer);
+        Supprimer.setBounds(650, 470, 160, 50);
 
-        Signaler.setText("Signaler");
+        Signaler.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeineb\\Desktop\\pattiserie\\signaler.png")); // NOI18N
         Signaler.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SignalerActionPerformed(evt);
             }
         });
+        getContentPane().add(Signaler);
+        Signaler.setBounds(311, 503, 130, 40);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(Valider)
-                        .addGap(18, 18, 18)
-                        .addComponent(Modifier)
-                        .addGap(18, 18, 18)
-                        .addComponent(Supprimer)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Signaler))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(NomEG, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(20, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(8, 8, 8)
-                .addComponent(NomEG)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Signaler))
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Valider)
-                    .addComponent(jButton2)
-                    .addComponent(Modifier)
-                    .addComponent(Supprimer))
-                .addContainerGap())
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeineb\\Desktop\\pattiserie\\12131.jpg")); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(-6, 0, 830, 690);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -356,6 +331,7 @@ public class Commentaires extends javax.swing.JFrame {
     private javax.swing.JButton Valider;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;

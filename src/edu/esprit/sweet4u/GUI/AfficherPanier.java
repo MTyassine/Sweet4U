@@ -67,8 +67,10 @@ public class AfficherPanier extends javax.swing.JFrame {
         supprimer = new javax.swing.JButton();
         Commander = new javax.swing.JButton();
         retourDuPanierAuArticles = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         jTable1.setModel(new PanierModel());
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -77,6 +79,13 @@ public class AfficherPanier extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jTable1);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(10, 210, 830, 214);
+
+        jPanel1.setLayout(null);
+        jPanel1.add(tfQuantite);
+        tfQuantite.setBounds(63, 12, 54, 20);
 
         ModifierQuantite.setText("ModifierQuantite");
         ModifierQuantite.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -89,10 +98,16 @@ public class AfficherPanier extends javax.swing.JFrame {
                 ModifierQuantiteActionPerformed(evt);
             }
         });
+        jPanel1.add(ModifierQuantite);
+        ModifierQuantite.setBounds(170, 10, 113, 30);
 
         jLabel2.setText("Quantité");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(17, 15, 42, 14);
 
         jLabel3.setText("Kg");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(121, 15, 12, 14);
 
         supprimer.setText("supprimer");
         supprimer.addActionListener(new java.awt.event.ActionListener() {
@@ -100,6 +115,8 @@ public class AfficherPanier extends javax.swing.JFrame {
                 supprimerActionPerformed(evt);
             }
         });
+        jPanel1.add(supprimer);
+        supprimer.setBounds(180, 70, 110, 30);
 
         Commander.setText("Commander");
         Commander.addActionListener(new java.awt.event.ActionListener() {
@@ -107,6 +124,8 @@ public class AfficherPanier extends javax.swing.JFrame {
                 CommanderActionPerformed(evt);
             }
         });
+        jPanel1.add(Commander);
+        Commander.setBounds(320, 70, 110, 30);
 
         retourDuPanierAuArticles.setText("Ajouter Un Autre Article");
         retourDuPanierAuArticles.addActionListener(new java.awt.event.ActionListener() {
@@ -114,66 +133,15 @@ public class AfficherPanier extends javax.swing.JFrame {
                 retourDuPanierAuArticlesActionPerformed(evt);
             }
         });
+        jPanel1.add(retourDuPanierAuArticles);
+        retourDuPanierAuArticles.setBounds(20, 70, 147, 30);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfQuantite, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ModifierQuantite)
-                        .addGap(46, 46, 46)
-                        .addComponent(supprimer)
-                        .addGap(26, 26, 26)
-                        .addComponent(Commander))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(retourDuPanierAuArticles)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfQuantite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ModifierQuantite)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(supprimer)
-                    .addComponent(Commander))
-                .addGap(18, 18, 18)
-                .addComponent(retourDuPanierAuArticles)
-                .addContainerGap(28, Short.MAX_VALUE))
-        );
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(40, 550, 710, 103);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeineb\\Desktop\\pattiserie\\12131.jpg")); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, -20, 860, 740);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -338,6 +306,7 @@ public class AfficherPanier extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Commander;
     private javax.swing.JButton ModifierQuantite;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;

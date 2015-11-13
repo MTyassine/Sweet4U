@@ -7,19 +7,12 @@ package edu.esprit.sweet4u.GUI;
 
 import edu.esprit.sweet4u.DAO.ClientDAO;
 import edu.esprit.sweet4u.DAO.IClientDAO;
-import edu.esprit.sweet4u.DAO.IPersonneDAO;
-import edu.esprit.sweet4u.DAO.IResponsablePatisserieDAO;
 import edu.esprit.sweet4u.DAO.PersonneDAO;
 import edu.esprit.sweet4u.DAO.ResponsablePatisserieDAO;
 import edu.esprit.sweet4u.entites.Client;
-import edu.esprit.sweet4u.entites.Personne;
 import edu.esprit.sweet4u.entites.ResponsablePatisserie;
-import java.sql.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
+import javax.swing.UIManager;
 
 /**
  *
@@ -33,6 +26,18 @@ public class CompteClient extends javax.swing.JFrame {
     public CompteClient() {
         initComponents();
         jPanel2.setVisible(false);
+    }
+
+    public static boolean isInteger(String s) {
+
+        boolean v = false;
+        try {
+            Integer.parseInt(s);
+            v = true;
+        } catch (Exception e) {
+            v = false;
+        }
+        return v;
     }
 
     /**
@@ -52,6 +57,7 @@ public class CompteClient extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        tnom = new javax.swing.JLabel();
         RBClient = new javax.swing.JRadioButton();
         RBRespo = new javax.swing.JRadioButton();
         jLabel3 = new javax.swing.JLabel();
@@ -61,12 +67,12 @@ public class CompteClient extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         cin = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
+        tnomP = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         nomPatisserie = new javax.swing.JTextField();
         adressepatisserie = new javax.swing.JTextField();
-        tnomP = new javax.swing.JLabel();
         tadressep = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         login = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -75,8 +81,6 @@ public class CompteClient extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         adresse = new javax.swing.JTextField();
         valider = new javax.swing.JButton();
-        jLabel14 = new javax.swing.JLabel();
-        tnom = new javax.swing.JLabel();
         tprenom = new javax.swing.JLabel();
         tcin = new javax.swing.JLabel();
         tlogin = new javax.swing.JLabel();
@@ -84,7 +88,7 @@ public class CompteClient extends javax.swing.JFrame {
         tdate = new javax.swing.JLabel();
         tadresse = new javax.swing.JLabel();
         date = new com.toedter.calendar.JDateChooser();
-        Date = new com.toedter.calendar.JDateChooser();
+        jLabel14 = new javax.swing.JLabel();
 
         jPanel1.setEnabled(false);
 
@@ -134,6 +138,12 @@ public class CompteClient extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setPreferredSize(new java.awt.Dimension(807, 800));
+        jPanel3.setLayout(null);
+
+        tnom.setBackground(new java.awt.Color(255, 0, 0));
+        tnom.setForeground(new java.awt.Color(255, 51, 0));
+        jPanel3.add(tnom);
+        tnom.setBounds(183, 260, 184, 0);
 
         RBClient.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         RBClient.setText("Client");
@@ -142,6 +152,8 @@ public class CompteClient extends javax.swing.JFrame {
                 RBClientActionPerformed(evt);
             }
         });
+        jPanel3.add(RBClient);
+        RBClient.setBounds(30, 170, 142, 31);
 
         RBRespo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         RBRespo.setText("Responsable Pâtisserie");
@@ -150,32 +162,57 @@ public class CompteClient extends javax.swing.JFrame {
                 RBRespoActionPerformed(evt);
             }
         });
+        jPanel3.add(RBRespo);
+        RBRespo.setBounds(523, 170, 304, 31);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("  Nom : ");
+        jPanel3.add(jLabel3);
+        jLabel3.setBounds(23, 224, 47, 15);
 
         nom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nomActionPerformed(evt);
             }
         });
+        jPanel3.add(nom);
+        nom.setBounds(183, 222, 184, 20);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("  Prenom : ");
+        jPanel3.add(jLabel4);
+        jLabel4.setBounds(23, 267, 67, 15);
+
+        prenom.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                prenomMouseEntered(evt);
+            }
+        });
+        prenom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                prenomActionPerformed(evt);
+            }
+        });
+        jPanel3.add(prenom);
+        prenom.setBounds(183, 267, 184, 20);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("  CIN : ");
+        jPanel3.add(jLabel5);
+        jLabel5.setBounds(36, 319, 41, 15);
 
         cin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cinActionPerformed(evt);
             }
         });
+        jPanel3.add(cin);
+        cin.setBounds(183, 314, 184, 20);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel12.setText("Nom Patisserie : ");
+        tnomP.setBackground(new java.awt.Color(255, 0, 0));
+        tnomP.setForeground(new java.awt.Color(255, 0, 0));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel13.setText("Adresse Patisserie : ");
@@ -192,11 +229,11 @@ public class CompteClient extends javax.swing.JFrame {
             }
         });
 
-        tnomP.setBackground(new java.awt.Color(255, 0, 0));
-        tnomP.setForeground(new java.awt.Color(255, 0, 0));
-
         tadressep.setBackground(new java.awt.Color(255, 0, 0));
         tadressep.setForeground(new java.awt.Color(255, 0, 0));
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel12.setText("Nom Patisserie : ");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -205,8 +242,8 @@ public class CompteClient extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel13))
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel12))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(tadressep, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -220,33 +257,50 @@ public class CompteClient extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(nomPatisserie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nomPatisserie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12))
                 .addGap(18, 18, 18)
-                .addComponent(tnomP)
+                .addComponent(tnomP, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(adressepatisserie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(tadressep)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jPanel3.add(jPanel2);
+        jPanel2.setBounds(506, 222, 0, 0);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("  Login : ");
+        jPanel3.add(jLabel6);
+        jLabel6.setBounds(36, 372, 54, 15);
+        jPanel3.add(login);
+        login.setBounds(183, 357, 184, 20);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("  Mot de passe :");
+        jPanel3.add(jLabel7);
+        jLabel7.setBounds(22, 423, 98, 15);
+        jPanel3.add(pwd);
+        pwd.setBounds(183, 421, 184, 20);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setText("  Date de Naissance :");
+        jPanel3.add(jLabel8);
+        jLabel8.setBounds(22, 478, 126, 15);
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel9.setText("   Adresse : ");
+        jPanel3.add(jLabel9);
+        jLabel9.setBounds(20, 579, 72, 15);
+        jPanel3.add(adresse);
+        adresse.setBounds(180, 559, 184, 73);
 
         valider.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        valider.setText("Valider");
+        valider.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeineb\\Desktop\\pattiserie\\valider.png")); // NOI18N
         valider.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 validerMouseReleased(evt);
@@ -257,160 +311,44 @@ public class CompteClient extends javax.swing.JFrame {
                 validerActionPerformed(evt);
             }
         });
-
-        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel14.setText("Inscription");
-
-        tnom.setBackground(new java.awt.Color(255, 0, 0));
-        tnom.setForeground(new java.awt.Color(255, 51, 0));
+        jPanel3.add(valider);
+        valider.setBounds(520, 619, 122, 38);
 
         tprenom.setBackground(new java.awt.Color(255, 0, 0));
         tprenom.setForeground(new java.awt.Color(255, 51, 0));
+        jPanel3.add(tprenom);
+        tprenom.setBounds(180, 290, 175, 10);
 
         tcin.setBackground(new java.awt.Color(255, 0, 0));
         tcin.setForeground(new java.awt.Color(255, 51, 0));
+        jPanel3.add(tcin);
+        tcin.setBounds(183, 335, 176, 10);
 
         tlogin.setBackground(new java.awt.Color(255, 0, 0));
         tlogin.setForeground(new java.awt.Color(255, 51, 0));
+        jPanel3.add(tlogin);
+        tlogin.setBounds(183, 387, 166, 10);
 
         tpwd.setBackground(new java.awt.Color(255, 0, 0));
         tpwd.setForeground(new java.awt.Color(255, 51, 0));
+        jPanel3.add(tpwd);
+        tpwd.setBounds(183, 442, 184, 10);
 
         tdate.setBackground(new java.awt.Color(255, 0, 0));
         tdate.setForeground(new java.awt.Color(255, 51, 0));
+        jPanel3.add(tdate);
+        tdate.setBounds(180, 510, 176, 10);
 
         tadresse.setBackground(new java.awt.Color(255, 0, 0));
         tadresse.setForeground(new java.awt.Color(255, 51, 0));
+        jPanel3.add(tadresse);
+        tadresse.setBounds(0, 0, 0, 0);
+        jPanel3.add(date);
+        date.setBounds(180, 479, 190, 20);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel4))
-                .addGap(314, 314, 314)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(adresse, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
-                            .addComponent(tadresse, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tdate, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(18, 18, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tpwd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(pwd, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tprenom, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(login, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(cin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(nom, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tnom, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(prenom, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(tcin, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tlogin, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel14)
-                                    .addComponent(RBClient, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(221, 221, 221)
-                        .addComponent(valider, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(RBRespo, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(55, 55, 55))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(205, 205, 205)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jLabel14)
-                        .addGap(83, 83, 83)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(RBClient)
-                            .addComponent(RBRespo))
-                        .addGap(44, 44, 44)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addGap(18, 18, 18)
-                        .addComponent(tnom)
-                        .addGap(7, 7, 7)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(prenom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tprenom)
-                        .addGap(21, 21, 21)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tcin)
-                        .addGap(12, 12, 12)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tlogin)))
-                .addGap(9, 9, 9)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(pwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tpwd)
-                        .addGap(17, 17, 17)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel8)
-                            .addComponent(Date, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tdate)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(65, 65, 65)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(adresse, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(valider, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(126, 126, 126)))
-                .addComponent(tadresse)
-                .addGap(22, 22, 22))
-        );
+        jLabel14.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeineb\\Desktop\\pattiserie\\acceuille.jpg")); // NOI18N
+        jPanel3.add(jLabel14);
+        jLabel14.setBounds(0, 0, 860, 720);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -422,12 +360,12 @@ public class CompteClient extends javax.swing.JFrame {
                 .addGap(251, 251, 251)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 1060, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 841, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -436,6 +374,7 @@ public class CompteClient extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void RBRespoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RBRespoActionPerformed
@@ -463,105 +402,193 @@ public class CompteClient extends javax.swing.JFrame {
     }//GEN-LAST:event_nomActionPerformed
 
     private void validerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validerActionPerformed
-
-        
-        
-        if(RBClient.isSelected())
-        {
+        int test = 0;
+        if (RBClient.isSelected()) {
             IClientDAO pdao = new ClientDAO();
-       
+            PersonneDAO cdao = new PersonneDAO();
+            int resultat = 0;
 
-        Client p = new Client();
-        if ((!nom.getText().trim().equals(""))&&(!prenom.getText().trim().equals(""))&&(!cin.getText().trim().equals(""))&&(!login.getText().trim().equals(""))&&(!pwd.getText().trim().equals(""))&&(!adresse.getText().trim().equals(""))){
-        p.setNom(nom.getText());
-        p.setPrenom(prenom.getText());
-        //p.setAdresse(adresse.getText());
-        //p.setDateNaissance(((JTextField)date.getDateEditor().getUiComponent()).getText());  
-
-      java.util.Date utilDate = date.getDate();
-        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-        p.setDateNaissance(sqlDate);
-        
-        String variable = cin.getText();
-        p.setCin(Integer.parseInt(variable));
-        p.setLogin(login.getText());
-        p.setPwd(pwd.getText());
-
-        System.out.println(p);
-        pdao.insertClient(p);
-        
-        JOptionPane.showMessageDialog(rootPane, "Client ajoutée avec succès");// TODO add your handling code here:
-    }else
-        {
-            tnom.setText("champ Invalide");
-            tprenom.setText("Champ Invalide");
-           tcin.setText("Champ Invalide");
-           tlogin.setText("Champ Invalide");
-           tpwd.setText("Champ Invalide");
-           tdate.setText("Champ Invalide");
-           tadresse.setText("Champ Invalide");
-          
-        }
-        
-        
-        
-        }
-        else 
-        {            
-            IResponsablePatisserieDAO pdao = new ResponsablePatisserieDAO();
-          
-
-        ResponsablePatisserie p = new ResponsablePatisserie();
-    if ((!nom.getText().trim().equals(""))&&(!prenom.getText().trim().equals(""))&&(!cin.getText().trim().equals(""))&&(!login.getText().trim().equals(""))&&(!pwd.getText().trim().equals(""))&&(!adresse.getText().trim().equals(""))&&(!tnomP.getText().trim().equals(""))&&(!tadresse.getText().trim().equals("")))
-    {
-        
-        p.setNom(nom.getText());
-        p.setPrenom(prenom.getText());
-        p.setAdresse(adresse.getText());
-       java.util.Date utilDate = date.getDate();
-        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-        p.setDateNaissance(sqlDate); 
-
-     
-        String variable = cin.getText();
-        p.setCin(Integer.parseInt(variable));
-        p.setLogin(login.getText());
-        p.setPwd(pwd.getText());
-        p.setNom_patisserie(nomPatisserie.getText());
-        //p.setAdresse_Patisserie(adressepatisserie.getText());
-        System.out.println(p);
-        pdao.insertResponsablePatisserie(p);
-
-        JOptionPane.showMessageDialog(rootPane, "Responsable  ajoutée avec succès");// TODO add your handling code here:
-  }else {
-            tnom.setText("champ Invalide");
-            tprenom.setText("Champ Invalide");
-           tcin.setText("Champ Invalide");
-           tlogin.setText("Champ Invalide");
-           tpwd.setText("Champ Invalide");
-           tdate.setText("Champ Invalide");
-           tadresse.setText("Champ Invalide");
-          tnomP.setText("Champ Invalide");
-          tadressep.setText("Champ Invalide");
-           
+            Client p = new Client();
+            tnom.setText("");
+            tprenom.setText("");
+            tcin.setText("");
+            tlogin.setText("");
+            tpwd.setText("");
+            tdate.setText("");
+            tadresse.setText("");
+            if (nom.getText().equals("")) {
+                tnom.setText("champ invalide");
+            } else {
+                if (isInteger(nom.getText())) {
+                    tnom.setText("saisie chaine");
+                } else {
+                    p.setNom(nom.getText());
+                    test++;
+                }
             }
-                   
-        }   
+            if (prenom.getText().equals("")) {
+                tprenom.setText("champs invalide");
+            } else {
+                if (isInteger(prenom.getText())) {
+                    tprenom.setText("saisie  chaine");
+                } else {
+                    p.setPrenom(prenom.getText());
+                    test++;
+                }
+            }
+            if (cin.getText().equals("")) {
+                tcin.setText("champs invalide");
+            } else {
+                if (!isInteger(cin.getText())) {
+                    tcin.setText("saisie num");
+                } else {
+                    test++;
+                    p.setCin(Integer.parseInt(cin.getText()));
+                }
+            }
+            if (adresse.getText().equals("")) {
+                tadresse.setText("champs invalide");
+            } else {
+                test++;
+                p.setAdresse(adresse.getText());
+            }
+            if (login.getText().equals("")) {
+                tlogin.setText("champs invalide");
+            } else {
+
+                resultat = cdao.trouverIdPersonneParLogin(login.getText());
+                if (resultat != 0) {
+                    JOptionPane.showMessageDialog(rootPane, "Utilisateur déja existant");
+                } else {
+                    test++;
+                    p.setLogin(login.getText());
+                }
+
+            }
+            if (pwd.getText().equals("")) {
+                tpwd.setText("champs invalide");
+            } else {
+                test++;
+                p.setPwd(pwd.getText());
+            }
+            System.out.println(test);
+            if (test == 6) {
+                java.util.Date utilDate = date.getDate();
+                java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+                p.setDateNaissance(sqlDate);
+                pdao.ajouterClient(p);
+
+                JOptionPane.showMessageDialog(rootPane, "Client ajoutée avec succès");
+            }
+
+        }
+        else if (RBRespo.isSelected())
+        {
+            ResponsablePatisserieDAO rdao = new  ResponsablePatisserieDAO();
+            PersonneDAO cdao = new PersonneDAO();
+            int resultat = 0;
+
+          ResponsablePatisserie rp = new ResponsablePatisserie();
+            tnom.setText("");
+            tprenom.setText("");
+            tcin.setText("");
+            tlogin.setText("");
+            tpwd.setText("");
+            tdate.setText("");
+            tadresse.setText("");
+            tnomP.setText("");
+            tadressep.setText("");
+            if (nom.getText().equals("")) {
+                tnom.setText("champ invalide");
+            } else {
+                if (isInteger(nom.getText())) {
+                    tnom.setText("saisie chaine");
+                } else {
+                    rp.setNom(nom.getText());
+                    test++;
+                }
+            }
+            if (prenom.getText().equals("")) {
+                tprenom.setText("champs invalide");
+            } else {
+                if (isInteger(prenom.getText())) {
+                    tprenom.setText("saisie chaine");
+                } else {
+                    rp.setPrenom(prenom.getText());
+                    test++;
+                }
+            }
+            if (cin.getText().equals("")) {
+                tcin.setText("champs invalide");
+            } else {
+                if (!isInteger(cin.getText())) {
+                    tcin.setText("saisie num");
+                } else {
+                    test++;
+                    rp.setCin(Integer.parseInt(cin.getText()));
+                }
+            }
+            if (adresse.getText().equals("")) {
+                tadresse.setText("champs invalide");
+            } else {
+                test++;
+                rp.setAdresse(adresse.getText());
+            }
+            if (login.getText().equals("")) {
+                tlogin.setText("champs invalide");
+            } else {
+
+                resultat = cdao.trouverIdPersonneParLogin(login.getText());
+                if (resultat != 0) {
+                    JOptionPane.showMessageDialog(rootPane, "Utilisateur déja existant");
+                } else {
+                    test++;
+                    rp.setLogin(login.getText());
+                }
+
+            }
+            if (pwd.getText().equals("")) {
+                tpwd.setText("champs invalide");
+            } else {
+                test++;
+                rp.setPwd(pwd.getText());
+            }
+            
+             if (nomPatisserie.getText().equals("")) {
+                tnomP.setText("champ invalide");
+            } else {
+                if (isInteger(nomPatisserie.getText())) {
+                    tnomP.setText("saisie chaine");
+                } else {
+                   rp.setNom_patisserie(nomPatisserie.getText());
+                    test++;
+                }
+            }
+              if (adressepatisserie.getText().equals("")) {
+                tadressep.setText("champs invalide");
+            } else {
+                test++;
+                rp.setAdresse_Patisserie(adressepatisserie.getText());
+               
+            }
+             
+             
+            System.out.println(test);
+            if (test == 8) {
+                java.util.Date utilDate = date.getDate();
+                java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+                rp.setDateNaissance(sqlDate);
+               rdao.insertResponsablePatisserie(rp);
+                JOptionPane.showMessageDialog(rootPane, "Responsable Patisserie ajoutée avec succès");
+            }
+   
+        }
         
-        nom.setText("");
-        prenom.setText("");
-       
-        cin.setText("");
-        login.setText("");
-        pwd.setText("");
-       // date.setDate("");
-         adresse.setText("");
-        nomPatisserie.setText("");
-        adressepatisserie.setText("");
         
         
-        
-        
+
+       //nom.setEnabled(false);
+
     }//GEN-LAST:event_validerActionPerformed
 
     private void adressePatisserieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adressePatisserieActionPerformed
@@ -584,6 +611,16 @@ public class CompteClient extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_adressepatisserieActionPerformed
 
+    private void prenomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prenomActionPerformed
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_prenomActionPerformed
+
+    private void prenomMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prenomMouseEntered
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_prenomMouseEntered
+
     /**
      * @param args the command line arguments
      */
@@ -595,10 +632,13 @@ public class CompteClient extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+                                       UIManager.setLookAndFeel("com.jtattoo.plaf.smart.SmartLookAndFeel");
+
+
             }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(CompteClient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
@@ -621,7 +661,6 @@ public class CompteClient extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.toedter.calendar.JDateChooser Date;
     private javax.swing.JRadioButton RBClient;
     private javax.swing.JRadioButton RBRespo;
     private javax.swing.JTextField adresse;

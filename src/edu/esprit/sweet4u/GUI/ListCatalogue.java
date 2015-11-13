@@ -45,19 +45,15 @@ public class ListCatalogue extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         tfimage = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Affichage Catalogue");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 200, 80));
+        getContentPane().setLayout(null);
 
         jTable1.setModel(new tablCatalogueClient());
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -67,24 +63,32 @@ public class ListCatalogue extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 490, 170));
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(40, 220, 780, 310);
 
-        jButton1.setText("Afficher article d'un catalogue");
+        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeineb\\Desktop\\pattiserie\\afficher article catalogue.png")); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 480, -1, -1));
+        getContentPane().add(jButton1);
+        jButton1.setBounds(300, 540, 190, 50);
 
-        jButton2.setText("Retour");
+        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeineb\\Desktop\\pattiserie\\retour.png")); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 490, -1, 40));
-        getContentPane().add(tfimage, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 20, 220, 190));
+        getContentPane().add(jButton2);
+        jButton2.setBounds(20, 650, 110, 40);
+        getContentPane().add(tfimage);
+        tfimage.setBounds(550, 20, 220, 190);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeineb\\Desktop\\pattiserie\\12131.jpg")); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 890, 700);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -164,7 +168,7 @@ public class ListCatalogue extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel tfimage;

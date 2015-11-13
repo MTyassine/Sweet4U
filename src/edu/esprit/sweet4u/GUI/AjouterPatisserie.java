@@ -54,11 +54,13 @@ public class AjouterPatisserie extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         jTextField2.setText("jTextField2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(null);
 
         jTable1.setModel(new PatisserieModel());
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -68,8 +70,10 @@ public class AjouterPatisserie extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 523, 152));
-        getContentPane().add(codePostal, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 185, 118, -1));
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(60, 350, 523, 152);
+        getContentPane().add(codePostal);
+        codePostal.setBounds(294, 185, 118, 20);
 
         delegation.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ariana", "Béja", "Ben Arous", "Bizerte", "Gabès", "Gafsa", "Jendouba", "Kairouan", "Kasserine", "Kébili", "La Manouba", "Le Kef", "Mahdia", "Médenine", "Monastir", "Nabeul", "Sfax", "Sidi Bouzid", "Siliana ", "Sousse", "Tataouine", "Tozeur", "Tunis", "Zaghouan" }));
         delegation.addActionListener(new java.awt.event.ActionListener() {
@@ -77,49 +81,70 @@ public class AjouterPatisserie extends javax.swing.JFrame {
                 delegationActionPerformed(evt);
             }
         });
-        getContentPane().add(delegation, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 185, -1, -1));
-        getContentPane().add(adresse, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 246, 340, -1));
+        getContentPane().add(delegation);
+        delegation.setBounds(105, 185, 83, 20);
+        getContentPane().add(adresse);
+        adresse.setBounds(90, 250, 340, 20);
 
-        ajouter.setText("Ajouter");
+        ajouter.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeineb\\Desktop\\pattiserie\\Ajouter.png")); // NOI18N
         ajouter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ajouterActionPerformed(evt);
             }
         });
-        getContentPane().add(ajouter, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 284, -1, -1));
+        getContentPane().add(ajouter);
+        ajouter.setBounds(600, 290, 150, 40);
 
-        modifier.setText("Modifier");
+        modifier.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeineb\\Desktop\\pattiserie\\modifier.png")); // NOI18N
         modifier.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 modifierActionPerformed(evt);
             }
         });
-        getContentPane().add(modifier, new org.netbeans.lib.awtextra.AbsoluteConstraints(213, 284, -1, -1));
+        getContentPane().add(modifier);
+        modifier.setBounds(600, 140, 150, 40);
 
+        suprimer.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeineb\\Desktop\\pattiserie\\Supprimer.png")); // NOI18N
         suprimer.setText("Suprimer");
         suprimer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 suprimerActionPerformed(evt);
             }
         });
-        getContentPane().add(suprimer, new org.netbeans.lib.awtextra.AbsoluteConstraints(322, 284, -1, -1));
+        getContentPane().add(suprimer);
+        suprimer.setBounds(600, 210, 150, 40);
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Delegation");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 188, -1, -1));
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(10, 188, 80, 15);
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Ciode Postal");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 188, -1, -1));
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(192, 188, 90, 15);
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Adresse");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 249, -1, -1));
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(10, 249, 60, 15);
 
+        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeineb\\Desktop\\pattiserie\\retour.png")); // NOI18N
         jButton1.setText("Retour");
+        jButton1.setActionCommand("");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 318, -1, -1));
+        getContentPane().add(jButton1);
+        jButton1.setBounds(30, 530, 150, 50);
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(520, 340, 0, 0);
+
+        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeineb\\Desktop\\pattiserie\\12131.jpg")); // NOI18N
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(-10, 0, 820, 710);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -264,6 +289,8 @@ public class AjouterPatisserie extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField2;

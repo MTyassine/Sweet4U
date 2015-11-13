@@ -49,7 +49,6 @@ public class CrudCatalogue extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         image = new javax.swing.JButton();
         tfimage = new javax.swing.JLabel();
         tfNom = new javax.swing.JTextField();
@@ -62,28 +61,30 @@ public class CrudCatalogue extends javax.swing.JFrame {
         ajouterArticle = new javax.swing.JButton();
         refrech = new javax.swing.JButton();
         Retour = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Gestion Catalogue");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 210, 50));
-
-        image.setText("Parcourir Image Folder");
+        image.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeineb\\Desktop\\pattiserie\\parcourir image folder.png")); // NOI18N
         image.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 imageActionPerformed(evt);
             }
         });
-        getContentPane().add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, -1, 30));
-        getContentPane().add(tfimage, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 30, 220, 190));
-        getContentPane().add(tfNom, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 110, -1));
+        getContentPane().add(image);
+        image.setBounds(310, 190, 180, 50);
+        getContentPane().add(tfimage);
+        tfimage.setBounds(560, 30, 220, 190);
+        getContentPane().add(tfNom);
+        tfNom.setBounds(130, 200, 170, 20);
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Nom Catalogue");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(23, 200, 110, 15);
 
-        ajouterCatalogue.setText("ajouter catalogue");
+        ajouterCatalogue.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeineb\\Desktop\\pattiserie\\ajout.png")); // NOI18N
         ajouterCatalogue.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 ajouterCatalogueMouseReleased(evt);
@@ -94,23 +95,26 @@ public class CrudCatalogue extends javax.swing.JFrame {
                 ajouterCatalogueActionPerformed(evt);
             }
         });
-        getContentPane().add(ajouterCatalogue, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 270, 150, -1));
+        getContentPane().add(ajouterCatalogue);
+        ajouterCatalogue.setBounds(580, 173, 160, 170);
 
-        modifier.setText("Modifier Catalogue");
+        modifier.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeineb\\Desktop\\pattiserie\\modifier.png")); // NOI18N
         modifier.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 modifierActionPerformed(evt);
             }
         });
-        getContentPane().add(modifier, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 320, 150, -1));
+        getContentPane().add(modifier);
+        modifier.setBounds(590, 370, 140, 50);
 
-        supprimer.setText("supprimer Ctalogue");
+        supprimer.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeineb\\Desktop\\pattiserie\\supprimer catalogue.png")); // NOI18N
         supprimer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 supprimerActionPerformed(evt);
             }
         });
-        getContentPane().add(supprimer, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 370, 150, -1));
+        getContentPane().add(supprimer);
+        supprimer.setBounds(570, 430, 170, 170);
 
         jTable1.setModel(new tablCatalogue());
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -120,31 +124,39 @@ public class CrudCatalogue extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, 130));
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(30, 330, 452, 130);
 
-        ajouterArticle.setText("ajouter articles de catalogue");
+        ajouterArticle.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeineb\\Desktop\\pattiserie\\ajouter article catalogue.png")); // NOI18N
         ajouterArticle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ajouterArticleActionPerformed(evt);
             }
         });
-        getContentPane().add(ajouterArticle, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 420, -1, -1));
+        getContentPane().add(ajouterArticle);
+        ajouterArticle.setBounds(50, 500, 170, 50);
 
-        refrech.setText("refresh");
+        refrech.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeineb\\Desktop\\pattiserie\\refresh.png")); // NOI18N
         refrech.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refrechActionPerformed(evt);
             }
         });
-        getContentPane().add(refrech, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 470, -1, -1));
+        getContentPane().add(refrech);
+        refrech.setBounds(260, 500, 130, 50);
 
-        Retour.setText("Retour");
+        Retour.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeineb\\Desktop\\pattiserie\\retour.png")); // NOI18N
         Retour.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RetourActionPerformed(evt);
             }
         });
-        getContentPane().add(Retour, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, -1, -1));
+        getContentPane().add(Retour);
+        Retour.setBounds(10, 613, 110, 40);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeineb\\Desktop\\pattiserie\\12131.jpg")); // NOI18N
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(10, 0, 870, 690);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -327,8 +339,8 @@ public class CrudCatalogue extends javax.swing.JFrame {
     private javax.swing.JButton ajouterArticle;
     private javax.swing.JButton ajouterCatalogue;
     private javax.swing.JButton image;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JButton modifier;

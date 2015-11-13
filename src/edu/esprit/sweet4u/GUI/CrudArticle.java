@@ -61,27 +61,43 @@ public class CrudArticle extends javax.swing.JFrame {
         ajouter = new javax.swing.JButton();
         modifier = new javax.swing.JButton();
         supprimer = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(tfNom, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 70, -1));
-        getContentPane().add(tfPrix, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 70, -1));
+        getContentPane().setLayout(null);
+
+        tfNom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfNomActionPerformed(evt);
+            }
+        });
+        getContentPane().add(tfNom);
+        tfNom.setBounds(120, 290, 140, 20);
+        getContentPane().add(tfPrix);
+        tfPrix.setBounds(120, 340, 140, 20);
 
         tfPromo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfPromoActionPerformed(evt);
             }
         });
-        getContentPane().add(tfPromo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 70, -1));
+        getContentPane().add(tfPromo);
+        tfPromo.setBounds(120, 390, 140, 20);
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Nom article");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 68, -1, -1));
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(20, 290, 90, 15);
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Prix");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 103, 54, -1));
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(20, 330, 54, 15);
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("Prix_Promo");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 144, -1, -1));
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(10, 390, 80, 15);
 
         jTable1.setModel(new tablArticle());
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -91,47 +107,57 @@ public class CrudArticle extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 420, 240));
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(300, 250, 420, 240);
 
-        retour.setText("Retour");
+        retour.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeineb\\Desktop\\pattiserie\\retour.png")); // NOI18N
         retour.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 retourActionPerformed(evt);
             }
         });
-        getContentPane().add(retour, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, -1));
+        getContentPane().add(retour);
+        retour.setBounds(30, 570, 110, 40);
 
-        refresh.setText("refresh");
+        refresh.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeineb\\Desktop\\pattiserie\\refresh.png")); // NOI18N
         refresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refreshActionPerformed(evt);
             }
         });
-        getContentPane().add(refresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, -1, -1));
+        getContentPane().add(refresh);
+        refresh.setBounds(170, 570, 110, 40);
 
-        ajouter.setText("ajouter");
+        ajouter.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeineb\\Desktop\\pattiserie\\Ajouter.png")); // NOI18N
         ajouter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ajouterActionPerformed(evt);
             }
         });
-        getContentPane().add(ajouter, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, -1, -1));
+        getContentPane().add(ajouter);
+        ajouter.setBounds(320, 570, 120, 40);
 
-        modifier.setText("modifier");
+        modifier.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeineb\\Desktop\\pattiserie\\modifier.png")); // NOI18N
         modifier.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 modifierActionPerformed(evt);
             }
         });
-        getContentPane().add(modifier, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, -1, -1));
+        getContentPane().add(modifier);
+        modifier.setBounds(480, 570, 120, 40);
 
-        supprimer.setText("supprimer");
+        supprimer.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeineb\\Desktop\\pattiserie\\Supprimer.png")); // NOI18N
         supprimer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 supprimerActionPerformed(evt);
             }
         });
-        getContentPane().add(supprimer, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 330, -1, -1));
+        getContentPane().add(supprimer);
+        supprimer.setBounds(630, 570, 120, 40);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeineb\\Desktop\\pattiserie\\12131.jpg")); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, -30, 800, 690);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -252,6 +278,10 @@ public class CrudArticle extends javax.swing.JFrame {
 
     }//GEN-LAST:event_supprimerActionPerformed
 
+    private void tfNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNomActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfNomActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -289,6 +319,7 @@ public class CrudArticle extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ajouter;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

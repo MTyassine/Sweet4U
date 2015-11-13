@@ -3,9 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package edu.esprit.sweet4u.GUI;
 
+import chrriis.dj.nativeswing.swtimpl.NativeInterface;
+import chrriis.dj.nativeswing.swtimpl.components.JWebBrowser;
+import chrriis.dj.nativeswing.swtimpl.components.WebBrowserAdapter;
+import chrriis.dj.nativeswing.swtimpl.components.WebBrowserNavigationEvent;
 import edu.esprit.sweet4u.DAO.ClientDAO;
 import edu.esprit.sweet4u.DAO.IClientDAO;
 import edu.esprit.sweet4u.DAO.IPersonneDAO;
@@ -16,15 +19,26 @@ import edu.esprit.sweet4u.GUI.modifCompteResponsable;
 import edu.esprit.sweet4u.entites.Client;
 import edu.esprit.sweet4u.entites.Personne;
 import edu.esprit.sweet4u.entites.ResponsablePatisserie;
-import edu.esprit.sweet4u.util.PersonneConenction;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.io.StringReader;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.text.html.HTMLEditorKit;
+import org.fb.GraphReaderExample;
 
 /**
  *
  * @author Zeineb
  */
 public class Authentification extends javax.swing.JFrame {
+
     static Personne personne;
     static ResponsablePatisserie responsable;
+
     /**
      * Creates new form Authentification
      */
@@ -43,58 +57,92 @@ public class Authentification extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         login = new javax.swing.JTextField();
-        pwd = new javax.swing.JTextField();
         connecter = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        pwd = new javax.swing.JPasswordField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setLayout(null);
 
         login.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
-        login.setForeground(new java.awt.Color(204, 204, 204));
-        login.setText("Taper Votre Login ");
+        login.setForeground(new java.awt.Color(153, 153, 153));
+        login.setText("Tapez votre Login :");
+        login.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        login.setSelectionColor(new java.awt.Color(0, 0, 0));
+        login.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                loginMouseClicked(evt);
+            }
+        });
         login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginActionPerformed(evt);
             }
         });
-        jPanel1.add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 64, 248, 34));
-
-        pwd.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
-        pwd.setForeground(new java.awt.Color(204, 204, 204));
-        pwd.setText("Taper Votre Mot de Passe ");
-        pwd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pwdActionPerformed(evt);
-            }
-        });
-        jPanel1.add(pwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 129, 248, 33));
+        jPanel1.add(login);
+        login.setBounds(110, 260, 248, 41);
 
         connecter.setBackground(new java.awt.Color(255, 255, 255));
         connecter.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        connecter.setText("Se connecter");
+        connecter.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeineb\\Desktop\\pattiserie\\se connectre.png")); // NOI18N
         connecter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 connecterActionPerformed(evt);
             }
         });
-        jPanel1.add(connecter, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 226, -1, 33));
+        jPanel1.add(connecter);
+        connecter.setBounds(126, 468, 140, 36);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel1.setText("S'inscrire");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 485, 62, -1));
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeineb\\Desktop\\pattiserie\\facebook.png")); // NOI18N
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(10, 600, 71, 32);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeineb\\Desktop\\pattiserie\\id.png")); // NOI18N
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(70, 260, 31, 38);
+
+        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeineb\\Desktop\\pattiserie\\pswd.png")); // NOI18N
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(90, 320, 40, 45);
+
+        pwd.setForeground(new java.awt.Color(153, 153, 153));
+        pwd.setText("Tapez votre mot de passe");
+        pwd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pwdMouseClicked(evt);
+            }
+        });
+        pwd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pwdActionPerformed(evt);
+            }
+        });
+        jPanel1.add(pwd);
+        pwd.setBounds(140, 320, 245, 45);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zeineb\\Desktop\\pattiserie\\authentif.jpg")); // NOI18N
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(0, -30, 410, 690);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 623, Short.MAX_VALUE)
         );
 
         pack();
@@ -102,53 +150,48 @@ public class Authentification extends javax.swing.JFrame {
 
     private void connecterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_connecterActionPerformed
 
+       
         IPersonneDAO pdao = new PersonneDAO();
         IClientDAO cdao = new ClientDAO();
-        Personne p =new Personne();
-        Client c =new Client();
-        
-        
-        p = pdao.FindPersonneByLogin(login.getText());
+        Personne p = new Personne();
+        Client c = new Client();
+
+        p = pdao.trouverPersonneParLogin(login.getText());
         int id_retour = p.getId();
         System.out.println(id_retour);
-        int id_retourclient = cdao.returnID2(id_retour);
+        int id_retourclient = cdao.retournerID2(id_retour);
         System.out.println(id_retourclient);
-        if (id_retourclient<=0)
-            
-        {  login.getText();
-            PersonneConenction.setInstance(p);  //ajouter par MT Yassine
-      // Personne p = pdao.FindPersonneByLogin(login.getText());
-        this.personne=p;
-        System.out.println(p);
-            //ModifierCompteClient ac = new ModifierCompteClient();
-            //EvoyerReclamation ac = new EvoyerReclamation();
-        AcceuilClient ac=new AcceuilClient();
-            
-          //ac.setP(p);
-          ac.setVisible(true);
-          this.setVisible(false);
-            
+        if (p.getBloquer() == 0) {
+            if (id_retourclient <= 0) {
+                login.getText();
+                // Personne p = pdao.FindPersonneByLogin(login.getText());
+                this.personne = p;
+                System.out.println(p);
+                ModifierCompteClient ac = new ModifierCompteClient();
+                ac.setP(p);
+                ac.setVisible(true);
+                this.setVisible(false);
+
+            } else if (id_retourclient > 0) {
+                login.getText();
+                // Personne p = pdao.FindPersonneByLogin(login.getText());
+                ResponsablePatisserieDAO a = new ResponsablePatisserieDAO();
+                this.personne = p;
+                responsable = a.FindResponsableByLogin(p.getId());
+                System.out.println(responsable);
+
+                modifCompteResponsable res = new modifCompteResponsable();
+
+                res.setVisible(true);
+                this.setVisible(false);
+
+            }
+
+        } else if (p.getBloquer() == 1) {
+            JOptionPane.showMessageDialog(rootPane, "vous etes bloquer");// TODO add your handling code here:
+
         }
-        else if(id_retourclient>0)
-        {
-            PersonneConenction.setInstance(p);  //ajouter par MT Yassine 
-            login.getText();
-      // Personne p = pdao.FindPersonneByLogin(login.getText());
-             ResponsablePatisserieDAO a = new ResponsablePatisserieDAO();
-             
-             this.personne=p;
-             responsable = a.FindResponsableByLogin(p.getId());
-             System.out.println(responsable);
-        
-           //modifCompteResponsable res = new modifCompteResponsable();
-             //AjouterPatisserie res = new AjouterPatisserie();
-          AcceuilResponsablePatisserie ar=new AcceuilResponsablePatisserie();
-         ar.setVisible(true);
-          this.setVisible(false);
-            
-            
-        }
-        
+
 //        login.getText();
 //      //  Personne p = pdao.FindPersonneByLogin(login.getText());
 //        this.personne=p;
@@ -161,16 +204,121 @@ public class Authentification extends javax.swing.JFrame {
 //          ac.setP(p);
 //          ac.setVisible(true);
 //          this.setVisible(false);
-     
+
     }//GEN-LAST:event_connecterActionPerformed
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
+
         // TODO add your handling code here:
     }//GEN-LAST:event_loginActionPerformed
+
+    private void loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseClicked
+        login.setText(null);
+        login.setForeground(Color.BLACK);
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_loginMouseClicked
+    public static String API_KEY = "1500144570264526";//à remplacer
+    public static String SECRET = "771a6"
+            + ""
+            + "dfde6924911dbed42343baedbad";//à remplacer
+//https://graph.facebook.com/oauth/authorize?
+    public static String firstRequest = "https://www.facebook.com/Sweet4U-517259518452085/?skip_nax_wizard=true"
+            + "client_id="
+            + API_KEY
+            + "&redirect_uri=http://www.facebook.com/connect/login_success.html&"
+            + "scope=publish_stream,offline_access,create_event,read_stream,email,user_about_me,user_birthday";
+    //
+    public static String secondRequest = "https://graph.facebook.com/oauth/access_token?"
+            + "client_id="
+            + API_KEY
+            + "&redirect_uri=http://www.facebook.com/connect/login_success.html&"
+            + "client_secret=" + SECRET + "&code=";
+    public static String access_token = "";
+    public static boolean firstRequestDone = false;
+    public static boolean secondRequestDone = false;
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        // TODO add your handling code here:
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                NativeInterface.open();
+                NativeInterface.initialize();
+                final JFrame authFrame = new JFrame();
+// Create the JWebBrowser and add the WebBrowserAdapter
+                JPanel webBrowserPanel = new JPanel(new BorderLayout());
+                final JWebBrowser webBrowser = new JWebBrowser();
+                webBrowser.navigate(firstRequest);
+                webBrowser.addWebBrowserListener(new WebBrowserAdapter() {
+                    public void locationChanged(WebBrowserNavigationEvent e) {
+                        super.locationChanged(e);
+// Check if first request was not done
+                        if (!firstRequestDone) {
+// Check if you left the location and were redirected to the next
+// location
+                            if (e.getNewResourceLocation().contains("http://www.facebook.com/connect/login_success.html?code")) {
+// If it successfully redirects you, get the verification code
+// and go for a second request
+                                String[] splits = e.getNewResourceLocation().split("=");
+                                String stage2temp = secondRequest + splits[1];
+                                System.out.println("First =" + splits[1]);
+                                webBrowser.navigate(stage2temp);
+                                firstRequestDone = true;
+                            }
+                        } else {
+// If secondRequest is not done yet, you perform this and get the
+// access_token
+                            if (!secondRequestDone) {
+                                authFrame.setVisible(false);
+                                System.out.println(webBrowser.getHTMLContent());
+// Create reader with the html content
+                                StringReader readerSTR = new StringReader(webBrowser.getHTMLContent());
+// Create a callback for html parser
+                                HTMLEditorKit.ParserCallback callback
+                                        = new HTMLEditorKit.ParserCallback() {
+                                            @Override
+                                            public void handleText(char[] data, int pos) {
+                                                System.out.println(data);
+// because there is only one line with the access_token
+// in the html content you can parse it.
+                                                String string = new String(data);
+                                                String[] temp1 = string.split("&");
+                                                String[] temp2 = temp1[0].split("=");
+                                                System.out.println("access tocken=" + temp2);
+                                                access_token = temp2[1];
+                                                new GraphReaderExample(access_token).runEverything();
+
+                                                //JOptionPane.showMessageDialog(rootPane, "Veuillez ajouter les informations manquantes  ");
+                                            }
+//                                                
+//                                         
+//                                                
+//
+
+                                        };
+
+                            }
+                        }
+                    }
+                });
+                webBrowserPanel.add(webBrowser, BorderLayout.CENTER);
+                authFrame.add(webBrowserPanel);
+                authFrame.setSize(400, 500);
+                authFrame.setVisible(true);
+
+            }
+        });
+    }//GEN-LAST:event_jLabel4MouseClicked
 
     private void pwdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_pwdActionPerformed
+
+    private void pwdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pwdMouseClicked
+        pwd.setText("");
+        pwd.setForeground(Color.BLACK);
+// TODO add your handling code here:
+    }//GEN-LAST:event_pwdMouseClicked
 
     /**
      * @param args the command line arguments
@@ -183,10 +331,11 @@ public class Authentification extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//              } 
+                UIManager.setLookAndFeel("com.jtattoo.plaf.smart.SmartLookAndFeel");
             }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(Authentification.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
@@ -210,8 +359,11 @@ public class Authentification extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton connecter;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField login;
-    private javax.swing.JTextField pwd;
+    private javax.swing.JPasswordField pwd;
     // End of variables declaration//GEN-END:variables
 }
